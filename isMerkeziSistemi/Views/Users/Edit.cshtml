@@ -1,0 +1,80 @@
+﻿
+@{
+    Layout = null;
+}
+@model isMerkeziSistemi.Entities.Users
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/Content/StyleSheet1.css" rel="stylesheet" />
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Add</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" integrity="sha256-qM7QTJSlvtPSxVRjVWNM2OfTAz/3k5ovHOKmKXuYMO4=" crossorigin="anonymous"></script>
+    <style>
+        #effect {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+    </style>
+</head>
+
+<body id="effect" class="center">
+
+    <div class="center">
+        <div class="form-group">
+            @using (Html.BeginForm("Edit", "Users", FormMethod.Post))
+            {
+                <table class="table table-dark" >
+                    <tr>
+                        <td>UserName</td>
+                        <td>
+                            @Html.TextBoxFor(a => a.Username)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Password</td>
+                        <td>
+                            @Html.PasswordFor(a => a.Password)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Email</td>
+                        <td>
+                            @Html.TextBoxFor(a => a.Email)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Age</td>
+                        <td>
+                            @Html.TextBoxFor(a => a.Age)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            @Html.HiddenFor(a => a.Id)
+
+                        </td>
+                    </tr>
+
+
+                </table>
+            }
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,111 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width,initial scale=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  
+   
+</head>
+<body style="background-color:azure;" class="hold-transition sidebar-mini">
+    <h3>Users</h3>
+    <a href="@Url.Action("Add" , "Users")">Add New User</a>
+    <ul>
+        <li>
+            <a href="~/Home">
+                <i class="glyphicon glyphicon-home"></i>
+                Home
+            </a>
+        </li>
+        <li>
+            <a href="~/Category/index">
+                <i class="glyphicon glyphicon-sort-by-alphabet"></i>
+                Users
+            </a>
+        </li>
+    </ul>
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">DataTable with default features</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>password</th>
+                        <th>email</th>
+                        <th>age</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var users in ViewBag.users)
+                    {
+                        <tr>
+                            <td>@users.Username</td>
+                            <td>@users.Password</td>
+                            <td>@users.Email</td>
+                            <td>@users.Age</td>
+                            <td>
+                                <a href="@Url.Action("Edit", "Users", new {id=users.Id})">Guncelle | </a>
+
+                                <a href="@Url.Action("Delete", "Users", new {id=users.Id})"
+                                   onclick="return confirm('Eminmisiniz ? ')">Delete</a>
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+        <!-- /.card-body -->
+    </div>
+
+
+    <script src="../AdminLTE-master/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="../AdminLTE-master/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- DataTables  & Plugins -->
+    <script src="../AdminLTE-master/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="../AdminLTE-master/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="../AdminLTE-master/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../AdminLTE-master/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="../AdminLTE-master/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../AdminLTE-master/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="../AdminLTE-master/plugins/jszip/jszip.min.js"></script>
+    <script src="../AdminLTE-master/plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="../AdminLTE-master/plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="../AdminLTE-master/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="../AdminLTE-master/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="../AdminLTE-master/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script>
+        $(function () {
+            $("#example1").DataTable({
+                "responsive": true, "lengthChange": false, "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });</script>
+</body>
+</html>
